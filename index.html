@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Portfólio Kayro Karsten</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --text: #39ff14;
+      --accent: #00fff7;
+      --link-hover: #ff3cac;
+      --shadow: 0 0 12px #00ffcc;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Share Tech Mono', monospace;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
+      margin-bottom: 1rem;
+      animation: flicker 2.5s infinite alternate;
+    }
+
+    p {
+      max-width: 700px;
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      color: #aaffaa;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    nav a {
+      color: var(--text);
+      font-size: 1.1rem;
+      text-decoration: none;
+      padding: 0.6rem 1.4rem;
+      border: 2px solid var(--text);
+      border-radius: 6px;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 8px #008f11;
+    }
+
+    nav a:hover {
+      background: var(--link-hover);
+      color: #000;
+      box-shadow: 0 0 20px var(--link-hover);
+      border-color: var(--link-hover);
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.9; text-shadow: 0 0 4px var(--accent); }
+      50% { opacity: 1; text-shadow: 0 0 6px var(--accent), 0 0 10px var(--accent); }
+      100% { opacity: 0.85; text-shadow: 0 0 5px var(--accent); }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.4rem;
+      }
+      p {
+        font-size: 1rem;
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Kayro G. P. Karsten</h1>
+  <p>Salve. Sou Kayro, um programador autodidata que curte terminal, interfaces retrô e código limpo. Aqui você encontra minhas landing pages, cada uma com uma vibe diferente.</p>
+  <nav>
+    <a href="page1.html">▶ AutoDrive (Carros)</a>
+    <a href="page2.html">▶ Café Expresso</a>
+    <a href="page3.html">▶ Academia PowerFit</a>
+  </nav>
+</body>
+</html>

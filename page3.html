@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academia PowerFit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --azul-escuro: #081f3d;
+      --azul-base: #0d47a1;
+      --azul-claro: #bbdefb;
+      --azul-metal: #64b5f6;
+      --gradiente: linear-gradient(135deg, #1e88e5, #0d47a1);
+      --glow-azul: rgba(100, 181, 246, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      overflow-y: auto;
+      background: var(--azul-escuro);
+      background-image:
+        radial-gradient(circle at top left, rgba(33, 150, 243, 0.3), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(100, 181, 246, 0.2), transparent 70%);
+      color: var(--azul-claro);
+      font-family: 'Share Tech Mono', monospace;
+      padding: 1.5rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .logo {
+      height: 200px;
+      max-width: 100%;
+      width: auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--azul-metal);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 6px var(--glow-azul), 0 0 12px var(--glow-azul);
+      animation: fadeInDown 1s ease-out;
+    }
+
+    p.lead {
+      font-size: 1.1rem;
+      color: #cfd8dc;
+      margin-bottom: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .planos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .plano {
+      background: rgba(13, 71, 161, 0.7);
+      border-radius: 18px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 320px;
+      box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4),
+                  0 0 20px rgba(33, 150, 243, 0.2);
+      animation: slideUp 1s ease forwards;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      flex-shrink: 0;
+    }
+
+    .plano:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px 3px var(--glow-azul),
+                  0 8px 30px rgba(33, 150, 243, 0.6);
+      border-color: var(--azul-metal);
+    }
+
+    .plano img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.4s ease;
+    }
+
+    .plano:hover img {
+      transform: scale(1.05);
+    }
+
+    .plano-content {
+      padding: 1rem 1.2rem;
+      color: #e0f7fa;
+      text-align: left;
+    }
+
+    .plano h3 {
+      font-size: 1.5rem;
+      color: #e3f2fd;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 6px var(--glow-azul);
+    }
+
+    .plano p {
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+    }
+
+    .preco {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--azul-metal);
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px var(--glow-azul);
+      display: inline-block;
+    }
+
+    .icone {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1rem;
+      fill: #fff;
+      filter: drop-shadow(0 0 2px var(--glow-azul));
+    }
+
+    a.voltar {
+      display: inline-block;
+      margin-top: 3rem;
+      color: var(--azul-claro);
+      text-decoration: none;
+      font-weight: 700;
+      border: 2px solid var(--azul-claro);
+      padding: 0.8rem 1.4rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+
+    a.voltar:hover {
+      background: var(--azul-claro);
+      color: var(--azul-escuro);
+      box-shadow: 0 0 14px var(--azul-claro);
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://www.imagensempng.com.br/wp-content/uploads/2021/07/04-17.png" class="logo" alt="Academia PowerFit">
+  </header>
+
+  <h1>Academia PowerFit</h1>
+  <p class="lead">Treine com a gente e alcance seus objetivos com planos flexíveis e acompanhamento profissional.</p>
+
+  <div class="planos">
+    <div class="plano">
+      <div class="plano-content">
+        <svg class="icone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.57 14.86l-1.41-1.41L20 12l-1.41-1.41L20.57 9a2 2 0 0 0 0-2.83l-2.83-2.83a2 2 0 0 0-2.83 0l-1.41 1.41L12 4l-1.41 1.41L9.17 4a2 2 0 0 0-2.83 0L3.51 6.83a2 2 0 0 0 0 2.83L4.93 11 4 12l.93 1.07-1.42 1.42a2 2 0 0 0 0 2.83l2.83 2.83a2 2 0 0 0 2.83 0l1.41-1.41L12 20l1.41-1.41 1.42 1.42a2 2 0 0 0 2.83 0l2.83-2.83a2 2 0 0 0-.01-2.83z"/></svg>
+        <h3>Plano Básico</h3>
+        <p>Acesso total à academia e uso de equipamentos.</p>
+        <div class="preco">R$ 80/mês</div>
+      </div>
+    </div>
+
+    <div class="plano">
+      <div class="plano-content">
+        <svg class="icone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 6h-2V4a2 2 0 0 0-4 0v2h-4V4a2 2 0 0 0-4 0v2H4a2 2 0 0 0 0 4h2v4H4a2 2 0 0 0 0 4h2v2a2 2 0 0 0 4 0v-2h4v2a2 2 0 0 0 4 0v-2h2a2 2 0 0 0 0-4h-2v-4h2a2 2 0 0 0 0-4z"/></svg>
+        <h3>Plano Premium</h3>
+        <p>Inclui aulas em grupo e acompanhamento individual.</p>
+        <div class="preco">R$ 150/mês</div>
+      </div>
+    </div>
+
+    <div class="plano">
+      <div class="plano-content">
+        <svg class="icone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 3a5 5 0 0 0-10 0v1H5a2 2 0 0 0-2 2v2h2V6h2v12H5v-2H3v2a2 2 0 0 0 2 2h2v1a5 5 0 0 0 10 0v-1h2a2 2 0 0 0 2-2v-2h-2v2h-2V6h2v2h2V6a2 2 0 0 0-2-2h-2V3z"/></svg>
+        <h3>Plano VIP</h3>
+        <p>Benefícios exclusivos com spa, sauna e nutricionista.</p>
+        <div class="preco">R$ 250/mês</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="voltar">← Voltar ao Portfólio</a>
+
+</body>
+</html>

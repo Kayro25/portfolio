@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoDrive - Concessionária de Carros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0e0e0f;
+      --primary: #ff4d4f;
+      --text: #eeeeee;
+      --accent: #76ff03;
+      --gray: #aaa;
+      --card-bg: linear-gradient(145deg, #1a1a1a, #222);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #1e1e1e;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    header h1 {
+      color: var(--primary);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      flex: 1 1 auto;
+    }
+
+    header nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 1rem;
+      flex: 1 1 100%;
+    }
+
+    header nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      font-size: 1rem;
+    }
+
+    header nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .hero h2 {
+      font-size: 2.6rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--gray);
+    }
+
+    .carros {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .carro {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    .carro:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(255, 77, 79, 0.25);
+    }
+
+    .carro img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .carro-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      position: relative;
+    }
+
+    .carro-content h3 {
+      font-size: 1.25rem;
+      color: #fff;
+    }
+
+    .preco {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .tag {
+      position: absolute;
+      top: -12px;
+      left: 12px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(255, 77, 79, 0.4);
+    }
+
+    .tag.popular {
+      background: #2196f3;
+    }
+
+    .tag.electric {
+      background: #00e676;
+    }
+
+    .botao {
+      margin-top: auto;
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .botao:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .cta a {
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.8rem 2rem;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+
+    .cta a:hover {
+      background: #e53935;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      padding: 2rem 1rem 1rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .carro {
+        width: 100%;
+        max-width: 90%;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+      }
+
+      header nav {
+        justify-content: flex-start;
+        gap: 0.5rem 1rem;
+      }
+
+      header h1 {
+        font-size: 1.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h2 {
+        font-size: 1.7rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+      }
+
+      .carro-content h3 {
+        font-size: 1.1rem;
+      }
+
+      .botao {
+        font-size: 0.95rem;
+      }
+
+      .cta a {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AutoDrive</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Modelos</a>
+      <a href="#">Sobre</a>
+      <a href="#">Contato</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Seu próximo carro está aqui</h2>
+    <p>Na AutoDrive, unimos elegância, tecnologia e performance. Veja nossos destaques e agende um test drive agora mesmo.</p>
+  </section>
+
+  <section class="carros">
+    <div class="carro">
+      <img src="https://garagem360.com.br/wp-content/uploads/2024/10/honda-new-city-seda-lx-2025-3.jpg" alt="Sedan vermelho">
+      <div class="carro-content">
+        <span class="tag">Novo</span>
+        <h3>Sedan LX 2025</h3>
+        <a href="#" class="botao">Ver Detalhes</a>
+      </div>
+    </div>
+
+    <div class="carro">
+      <img src="https://tse4.mm.bing.net/th/id/OIP.RYM0PhVIr89L3GMBSfPOEwHaF7?rs=1&pid=ImgDetMain&o=7&rm=3" alt="SUV preto">
+      <div class="carro-content">
+        <span class="tag popular">Mais Vendido</span>
+        <h3>SUV Adventure 4x4</h3>
+        <a href="#" class="botao">Ver Detalhes</a>
+      </div>
+    </div>
+
+    <div class="carro">
+      <img src="https://cdn.pixabay.com/photo/2012/05/29/00/43/vehicle-49278_1280.jpg" alt="Esportivo azul">
+      <div class="carro-content">
+        <span class="tag electric">Elétrico</span>
+        <h3>Esportivo ZR</h3>
+        <a href="#" class="botao">Ver Detalhes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <a href="#">Solicite uma proposta</a>
+  </section>
+
+  <footer>
+    © 2025 AutoDrive. Todos os direitos reservados.
+  </footer>
+</body>
+</html>

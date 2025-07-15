@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Expresso</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #1d150f;
+      --card: #33221c;
+      --text: #f5f5f5;
+      --accent: #d7ccc8;
+      --highlight: #cfa46c;
+      --shadow: rgba(0, 0, 0, 0.4);
+      --gold: #bfa26c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+    }
+
+    header {
+      background: url('https://cdn.pixabay.com/photo/2015/06/24/15/45/coffee-820317_1280.jpg') center/cover no-repeat;
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      color: var(--highlight);
+      text-shadow: 0 0 6px rgba(207, 164, 108, 0.4),
+                   0 0 12px rgba(207, 164, 108, 0.2);
+    }
+
+    header h1:hover {
+      text-shadow: 0 0 8px rgba(207, 164, 108, 0.7),
+                   0 0 14px rgba(207, 164, 108, 0.4);
+    }
+
+    header p {
+      color: var(--accent);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 1rem auto 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--highlight);
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+      border-left: 4px solid var(--highlight);
+      padding-left: 0.8rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .imagem-secao {
+      width: 100%;
+      border-radius: 10px;
+      margin: 1.5rem 0;
+      box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .card {
+      perspective: 1000px;
+      width: 280px;
+      height: 360px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card::after {
+      content: 'Clique para ver mais';
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gold);
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      pointer-events: none;
+      font-style: italic;
+      backdrop-filter: blur(2px);
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      border-radius: 12px;
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: 0 6px 16px var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+
+    .card-front img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .card-front .card-content,
+    .card-back .card-content {
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      color: var(--highlight);
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: #4b3228;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 4rem 0;
+    }
+
+    .cta a {
+      background: var(--highlight);
+      color: #3e2723;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 14px rgba(207, 164, 108, 0.3);
+    }
+
+    .cta a:hover {
+      background: #e0b46c;
+      transform: scale(1.04);
+    }
+
+    footer {
+      background: #1a120e;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #bcaea8;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      header {
+        padding: 4rem 1rem 2rem;
+        background-position: center;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+        padding: 0.5rem 0.8rem;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        padding-left: 0.5rem;
+      }
+
+      .grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 90vw;
+        height: 360px;
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+      }
+
+      .card-text {
+        font-size: 0.95rem;
+      }
+
+      .cta a {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+
+      footer {
+        font-size: 0.8rem;
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      header p {
+        font-size: 0.95rem;
+      }
+
+      .card {
+        height: 340px;
+      }
+
+      .card-text {
+        font-size: 0.9rem;
+      }
+
+      .cta a {
+        width: 100%;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Café Expresso</h1>
+    <p>Paixão em cada xícara. Conheça nossa história, nossos grãos e o que nos torna especiais.</p>
+  </header>
+
+  <section>
+    <h2>Nossa Origem</h2>
+    <i class="fa-solid fa-book"></i>
+    <p>Fundado em 2010 no coração da cidade, o Café Expresso nasceu do desejo de resgatar a tradição do café artesanal. Cada etapa — da seleção à torra — é feita com carinho e respeito à cultura cafeeira.</p>
+  </section>
+
+  <section>
+    <h2>Sabores Artesanais</h2>
+    <div class="grid">
+      <div class="card" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.piAG-2NfCDdxAGlD2ItK9gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cappuccino">
+            <div class="card-content">
+              <div class="card-title">Cappuccino Cremoso</div>
+              <div class="card-text">Leite vaporizado e um toque de chocolate tornam nosso cappuccino inesquecível.</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="card-title">Ingredientes</div>
+              <div class="card-text">Feito com leite integral, café expresso e um toque de cacau puro.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://fancifuleats.com/wp-content/uploads/2022/09/dark-chocolate-mocha-6-1-720x1080.jpg" alt="Mocha">
+            <div class="card-content">
+              <div class="card-title">Mocha de Chocolate</div>
+              <div class="card-text">Uma fusão perfeita entre o sabor do café e a cremosidade do chocolate.</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="card-title">Detalhes</div>
+              <div class="card-text">Espresso com calda de chocolate meio amargo e leite vaporizado.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" tabindex="0">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.C1ENYD3fHnfx9nFBv4HJUwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Expresso Clássico">
+            <div class="card-content">
+              <div class="card-title">Expresso Clássico</div>
+              <div class="card-text">O favorito dos puristas: forte, intenso e cheio de aroma.</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="card-title">Origem</div>
+              <div class="card-text">Grãos 100% arábica, torra média escura e preparo tradicional italiano.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Um Espaço Pensado Para Você</h2>
+    <i class="fa-solid fa-chair"></i>
+    <p>Nosso ambiente une rusticidade e modernidade. Wi-Fi gratuito, tomadas individuais e poltronas confortáveis criam o cenário ideal para reuniões, leitura ou um simples café entre amigos.</p>
+  </section>
+
+  <section class="cta">
+    <a href="#">Visite nossa cafeteria</a>
+  </section>
+
+  <footer>
+    © 2025 Café Expresso. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+    });
+  </script>
+</body>
+</html>
