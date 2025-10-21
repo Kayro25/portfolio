@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Café Expresso</title>
+  <title>Café Expresso | Experiência Premium</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #1d150f;
-      --card: #33221c;
-      --text: #f5f5f5;
-      --accent: #d7ccc8;
-      --highlight: #cfa46c;
-      --shadow: rgba(0, 0, 0, 0.4);
-      --gold: #bfa26c;
+      --cream: #FFFDF5;
+      --paper: #F8F5F0;
+      --dark: #2C1810;
+      --brown: #8B5A2B;
+      --light-brown: #A67B5B;
+      --accent: #D4A574;
+      --text: #3E2723;
+      --text-light: #8D6E63;
+      --shadow: 0 8px 30px rgba(0,0,0,0.08);
+      --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     * {
@@ -23,336 +26,675 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: var(--bg);
+      background: var(--cream);
       color: var(--text);
       font-family: 'Inter', sans-serif;
-      line-height: 1.8;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    header {
-      background: url('https://cdn.pixabay.com/photo/2015/06/24/15/45/coffee-820317_1280.jpg') center/cover no-repeat;
+    /* Header Minimalista */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 253, 245, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(139, 90, 43, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--brown);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 3rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--brown);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--brown);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 6rem 1rem 4rem;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--paper) 0%, var(--cream) 100%);
+      position: relative;
     }
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
-      color: var(--highlight);
-      text-shadow: 0 0 6px rgba(207, 164, 108, 0.4),
-                   0 0 12px rgba(207, 164, 108, 0.2);
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4a574' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
     }
 
-    header h1:hover {
-      text-shadow: 0 0 8px rgba(207, 164, 108, 0.7),
-                   0 0 14px rgba(207, 164, 108, 0.4);
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
     }
 
-    header p {
-      color: var(--accent);
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 1rem auto 0;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: 0.6rem 1rem;
-      border-radius: 5px;
+    .hero-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -1px;
     }
 
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 1000px;
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.5rem;
+      background: var(--brown);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .btn:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--brown);
+      color: var(--brown);
+    }
+
+    .btn-outline:hover {
+      background: var(--brown);
+      color: white;
+    }
+
+    /* About Section */
+    .about {
+      padding: 8rem 0;
+      background: var(--paper);
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      max-width: 600px;
       margin: 0 auto;
     }
 
-    h2 {
-      font-size: 2rem;
-      color: var(--highlight);
-      margin-bottom: 1rem;
-      font-family: 'Playfair Display', serif;
-      border-left: 4px solid var(--highlight);
-      padding-left: 0.8rem;
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
     }
 
-    p {
+    .about-text p {
       font-size: 1.1rem;
-      color: var(--accent);
+      color: var(--text-light);
+      margin-bottom: 2rem;
     }
 
-    .imagem-secao {
-      width: 100%;
-      border-radius: 10px;
-      margin: 1.5rem 0;
-      box-shadow: 0 6px 16px var(--shadow);
-    }
-
-    .grid {
-      display: flex;
-      flex-wrap: wrap;
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      justify-content: center;
+      margin-top: 3rem;
     }
 
-    .card {
-      perspective: 1000px;
-      width: 280px;
-      height: 360px;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .card::after {
-      content: 'Clique para ver mais';
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: var(--gold);
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 0.3rem 0.6rem;
-      font-size: 0.85rem;
-      border-radius: 4px;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-      pointer-events: none;
-      font-style: italic;
-      backdrop-filter: blur(2px);
-    }
-
-    .card:hover::after {
-      opacity: 1;
-    }
-
-    .card-inner {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform-style: preserve-3d;
-      transition: transform 0.6s ease;
-      border-radius: 12px;
-    }
-
-    .card.flipped .card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .card-front,
-    .card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 12px;
-      overflow: hidden;
-      background: var(--card);
-      box-shadow: 0 6px 16px var(--shadow);
+    .feature {
       display: flex;
-      flex-direction: column;
-      justify-content: start;
+      align-items: flex-start;
+      gap: 1rem;
     }
 
-    .card-front img {
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--cream);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brown);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .feature-text h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .feature-text p {
+      font-size: 0.95rem;
+      margin: 0;
+      color: var(--text-light);
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .image-frame {
       width: 100%;
-      height: 190px;
+      height: 500px;
+      background: var(--cream);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      transition: var(--transition);
     }
 
-    .card-front .card-content,
-    .card-back .card-content {
-      padding: 1rem;
+    .image-frame:hover img {
+      transform: scale(1.05);
     }
 
-    .card-title {
-      font-family: 'Playfair Display', serif;
-      color: var(--highlight);
-      font-size: 1.3rem;
-      margin-bottom: 0.4rem;
+    /* Products Section */
+    .products {
+      padding: 8rem 0;
     }
 
-    .card-text {
-      color: var(--accent);
-      font-size: 1rem;
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
     }
 
-    .card-back {
-      transform: rotateY(180deg);
-      background: #4b3228;
+    .product-card {
+      background: var(--cream);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
     }
 
-    .cta {
-      text-align: center;
-      margin: 4rem 0;
+    .product-card:hover {
+      transform: translateY(-10px);
     }
 
-    .cta a {
-      background: var(--highlight);
-      color: #3e2723;
-      padding: 0.9rem 2rem;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 14px rgba(207, 164, 108, 0.3);
+    .product-image {
+      height: 250px;
+      background: var(--paper);
+      overflow: hidden;
     }
 
-    .cta a:hover {
-      background: #e0b46c;
-      transform: scale(1.04);
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
     }
 
-    footer {
-      background: #1a120e;
+    .product-card:hover .product-image img {
+      transform: scale(1.1);
+    }
+
+    .product-content {
       padding: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #bcaea8;
     }
 
-    /* RESPONSIVO */
+    .product-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: 1rem;
+    }
+
+    .product-description {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Space Section */
+    .space {
+      padding: 8rem 0;
+      background: var(--paper);
+    }
+
+    .space-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .space-features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .space-feature {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem;
+      background: var(--cream);
+      border-radius: 16px;
+      transition: var(--transition);
+    }
+
+    .space-feature:hover {
+      transform: translateX(10px);
+    }
+
+    .space-feature-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--brown);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .space-feature-text h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .space-feature-text p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 8rem 0;
+      text-align: center;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--brown) 100%);
+      color: white;
+    }
+
+    .cta-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-light {
+      background: white;
+      color: var(--dark);
+    }
+
+    .btn-light:hover {
+      background: var(--cream);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 5rem 0 2rem;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .footer-logo {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo span {
+      color: var(--accent);
+    }
+
+    .footer-about {
+      color: #BCB4AA;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .footer-section h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #BCB4AA;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 4rem;
+    }
+
+    .footer-bottom p {
+      color: #BCB4AA;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .about-content,
+      .space-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
     @media (max-width: 768px) {
-      header {
-        padding: 4rem 1rem 2rem;
-        background-position: center;
+      .nav-links {
+        display: none;
       }
-
-      header h1 {
-        font-size: 2.2rem;
+      
+      .hero {
+        padding: 6rem 1rem 3rem;
       }
-
-      header p {
-        font-size: 1rem;
-        padding: 0.5rem 0.8rem;
+      
+      .hero-title {
+        font-size: 2.5rem;
       }
-
-      section {
-        padding: 2rem 1rem;
+      
+      .section-title {
+        font-size: 2rem;
       }
-
-      h2 {
-        font-size: 1.6rem;
-        padding-left: 0.5rem;
+      
+      .products-grid {
+        grid-template-columns: 1fr;
       }
-
-      .grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-      }
-
-      .card {
-        width: 100%;
-        max-width: 90vw;
-        height: 360px;
-      }
-
-      .card-title {
-        font-size: 1.2rem;
-      }
-
-      .card-text {
-        font-size: 0.95rem;
-      }
-
-      .cta a {
-        font-size: 1rem;
-        padding: 0.8rem 1.5rem;
-      }
-
-      footer {
-        font-size: 0.8rem;
-        padding: 1.5rem;
+      
+      .footer-container {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.9rem;
+      .header-container {
+        padding: 0 1rem;
       }
-
-      header p {
-        font-size: 0.95rem;
+      
+      .hero-title {
+        font-size: 2rem;
       }
-
-      .card {
-        height: 340px;
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
       }
-
-      .card-text {
-        font-size: 0.9rem;
+      
+      .btn {
+        padding: 0.875rem 2rem;
       }
-
-      .cta a {
-        width: 100%;
-        display: inline-block;
-        box-sizing: border-box;
+      
+      .space-feature {
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Café Expresso</h1>
-    <p>Paixão em cada xícara. Conheça nossa história, nossos grãos e o que nos torna especiais.</p>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">Café<span>Expresso</span></a>
+      <nav class="nav-links">
+        <a href="#home">Início</a>
+        <a href="#about">Sobre</a>
+        <a href="#products">Cardápio</a>
+        <a href="#space">Espaço</a>
+        <a href="#contact">Contato</a>
+      </nav>
+    </div>
   </header>
 
-  <section>
-    <h2>Nossa Origem</h2>
-    <i class="fa-solid fa-book"></i>
-    <p>Fundado em 2010 no coração da cidade, o Café Expresso nasceu do desejo de resgatar a tradição do café artesanal. Cada etapa — da seleção à torra — é feita com carinho e respeito à cultura cafeeira.</p>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 class="hero-title">Paixão em cada xícara</h1>
+      <p class="hero-subtitle">Descubra o sabor autêntico do café artesanal em um ambiente onde cada detalhe foi pensado para sua experiência única</p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="#products" class="btn">
+          <i class="fas fa-mug-hot"></i>
+          Explorar Cardápio
+        </a>
+        <a href="#about" class="btn btn-outline">
+          <i class="fas fa-book-open"></i>
+          Nossa História
+        </a>
+      </div>
+    </div>
   </section>
 
-  <section>
-    <h2>Sabores Artesanais</h2>
-    <div class="grid">
-      <div class="card" tabindex="0">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="https://tse1.mm.bing.net/th/id/OIP.piAG-2NfCDdxAGlD2ItK9gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cappuccino">
-            <div class="card-content">
-              <div class="card-title">Cappuccino Cremoso</div>
-              <div class="card-text">Leite vaporizado e um toque de chocolate tornam nosso cappuccino inesquecível.</div>
-            </div>
-          </div>
-          <div class="card-back">
-            <div class="card-content">
-              <div class="card-title">Ingredientes</div>
-              <div class="card-text">Feito com leite integral, café expresso e um toque de cacau puro.</div>
-            </div>
-          </div>
-        </div>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Nossa Origem</h2>
+        <p class="section-subtitle">Uma tradição familiar que se transformou em paixão pela arte do café</p>
       </div>
-
-      <div class="card" tabindex="0">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="https://fancifuleats.com/wp-content/uploads/2022/09/dark-chocolate-mocha-6-1-720x1080.jpg" alt="Mocha">
-            <div class="card-content">
-              <div class="card-title">Mocha de Chocolate</div>
-              <div class="card-text">Uma fusão perfeita entre o sabor do café e a cremosidade do chocolate.</div>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Fundado em 2010 no coração da cidade, o Café Expresso nasceu do desejo de resgatar a tradição do café artesanal. Cada etapa — da seleção à torra — é feita com carinho e respeito à cultura cafeeira.</p>
+          <p>Nossa missão é proporcionar uma experiência sensorial única, onde cada xícara conta uma história de dedicação e amor pelo café de qualidade.</p>
+          <div class="features">
+            <div class="feature">
+              <div class="feature-icon">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Grãos Selecionados</h4>
+                <p>Selecionamos os melhores grãos das principais regiões produtoras</p>
+              </div>
             </div>
-          </div>
-          <div class="card-back">
-            <div class="card-content">
-              <div class="card-title">Detalhes</div>
-              <div class="card-text">Espresso com calda de chocolate meio amargo e leite vaporizado.</div>
+            <div class="feature">
+              <div class="feature-icon">
+                <i class="fas fa-fire"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Torra Artesanal</h4>
+                <p>Processo de torra controlado para realçar sabores e aromas</p>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" tabindex="0">
-        <div class="card-inner">
-          <div class="card-front">
-            <img src="https://tse3.mm.bing.net/th/id/OIP.C1ENYD3fHnfx9nFBv4HJUwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Expresso Clássico">
-            <div class="card-content">
-              <div class="card-title">Expresso Clássico</div>
-              <div class="card-text">O favorito dos puristas: forte, intenso e cheio de aroma.</div>
+            <div class="feature">
+              <div class="feature-icon">
+                <i class="fas fa-award"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Qualidade Premium</h4>
+                <p>Compromisso com a excelência em cada etapa do processo</p>
+              </div>
             </div>
-          </div>
-          <div class="card-back">
-            <div class="card-content">
-              <div class="card-title">Origem</div>
-              <div class="card-text">Grãos 100% arábica, torra média escura e preparo tradicional italiano.</div>
+            <div class="feature">
+              <div class="feature-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Feito com Amor</h4>
+                <p>Paixão que transforma o simples ato de tomar café em experiência</p>
+              </div>
             </div>
           </div>
         </div>
@@ -360,24 +702,207 @@
     </div>
   </section>
 
-  <section>
-    <h2>Um Espaço Pensado Para Você</h2>
-    <i class="fa-solid fa-chair"></i>
-    <p>Nosso ambiente une rusticidade e modernidade. Wi-Fi gratuito, tomadas individuais e poltronas confortáveis criam o cenário ideal para reuniões, leitura ou um simples café entre amigos.</p>
+  <!-- Products Section -->
+  <section class="products" id="products">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Nossos Destaques</h2>
+        <p class="section-subtitle">Descubra os sabores que conquistaram nossos clientes</p>
+      </div>
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.piAG-2NfCDdxAGlD2ItK9gHaEK?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cappuccino Cremoso">
+          </div>
+          <div class="product-content">
+            <h3 class="product-title">Cappuccino Cremoso</h3>
+            <div class="product-price">R$ 14,90</div>
+            <p class="product-description">Leite vaporizado e um toque de chocolate tornam nosso cappuccino inesquecível. Perfeito para começar o dia com energia e sabor.</p>
+            <a href="#" class="btn" style="width: 100; text-align: center;">
+              <i class="fas fa-shopping-cart"></i>
+              Adicionar ao Pedido
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://fancifuleats.com/wp-content/uploads/2022/09/dark-chocolate-mocha-6-1-720x1080.jpg" alt="Mocha de Chocolate">
+          </div>
+          <div class="product-content">
+            <h3 class="product-title">Mocha de Chocolate</h3>
+            <div class="product-price">R$ 16,90</div>
+            <p class="product-description">Uma fusão perfeita entre o sabor do café e a cremosidade do chocolate meio amargo. Uma experiência indulgente para os sentidos.</p>
+            <a href="#" class="btn" style="width: 100; text-align: center;">
+              <i class="fas fa-shopping-cart"></i>
+              Adicionar ao Pedido
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.C1ENYD3fHnfx9nFBv4HJUwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Expresso Clássico">
+          </div>
+          <div class="product-content">
+            <h3 class="product-title">Expresso Clássico</h3>
+            <div class="product-price">R$ 8,90</div>
+            <p class="product-description">O favorito dos puristas: forte, intenso e cheio de aroma. Grãos 100% arábica com torra média escura e preparo tradicional italiano.</p>
+            <a href="#" class="btn" style="width: 100; text-align: center;">
+              <i class="fas fa-shopping-cart"></i>
+              Adicionar ao Pedido
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="cta">
-    <a href="#">Visite nossa cafeteria</a>
+  <!-- Space Section -->
+  <section class="space" id="space">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title">Nosso Espaço</h2>
+        <p class="section-subtitle">Um ambiente pensado para seu conforto e produtividade</p>
+      </div>
+      <div class="space-content">
+        <div class="space-image">
+          <div class="image-frame">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Ambiente da cafeteria">
+          </div>
+        </div>
+        <div class="space-text">
+          <p>Nosso ambiente une rusticidade e modernidade, criando o cenário ideal para diferentes momentos do seu dia.</p>
+          <p>Wi-Fi gratuito, tomadas individuais e poltronas confortáveis transformam nossa cafeteria no seu escritório, ponto de encontro ou refúgio pessoal.</p>
+          <div class="space-features">
+            <div class="space-feature">
+              <div class="space-feature-icon">
+                <i class="fas fa-wifi"></i>
+              </div>
+              <div class="space-feature-text">
+                <h4>Wi-Fi Grátis</h4>
+                <p>Conexão rápida e estável para trabalho e estudos</p>
+              </div>
+            </div>
+            <div class="space-feature">
+              <div class="space-feature-icon">
+                <i class="fas fa-plug"></i>
+              </div>
+              <div class="space-feature-text">
+                <h4>Tomadas Individuais</h4>
+                <p>Tomadas disponíveis em todas as mesas</p>
+              </div>
+            </div>
+            <div class="space-feature">
+              <div class="space-feature-icon">
+                <i class="fas fa-couch"></i>
+              </div>
+              <div class="space-feature-text">
+                <h4>Conforto Premium</h4>
+                <p>Poltronas e assentos ergonômicos</p>
+              </div>
+            </div>
+            <div class="space-feature">
+              <div class="space-feature-icon">
+                <i class="fas fa-music"></i>
+              </div>
+              <div class="space-feature-text">
+                <h4>Ambiente Aconchegante</h4>
+                <p>Música ambiente cuidadosamente selecionada</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    © 2025 Café Expresso. Todos os direitos reservados.
+  <!-- CTA Section -->
+  <section class="cta" id="contact">
+    <div class="section-container">
+      <h2 class="cta-title">Pronto para uma experiência única?</h2>
+      <p class="cta-subtitle">Visite nossa cafeteria e descubra por que somos a escolha preferida dos amantes de café</p>
+      <a href="#" class="btn btn-light">
+        <i class="fas fa-map-marker-alt"></i>
+        Ver Localização
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">Café<span>Expresso</span></div>
+        <p class="footer-about">Há mais de 15 anos proporcionando a melhor experiência em café artesanal com qualidade, tradição e atendimento personalizado.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Cardápio</h3>
+        <ul class="footer-links">
+          <li><a href="#">Cafés Especiais</a></li>
+          <li><a href="#">Bebidas Quentes</a></li>
+          <li><a href="#">Bebidas Geladas</a></li>
+          <li><a href="#">Bolos & Doces</a></li>
+          <li><a href="#">Salgados</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Horários</h3>
+        <ul class="footer-links">
+          <li><a href="#">Segunda a Sexta: 7h-22h</a></li>
+          <li><a href="#">Sábados: 8h-23h</a></li>
+          <li><a href="#">Domingos: 8h-20h</a></li>
+          <li><a href="#">Feriados: 9h-18h</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <ul class="footer-links">
+          <li><a href="#">(11) 9999-9999</a></li>
+          <li><a href="#">contato@cafeexpresso.com</a></li>
+          <li><a href="#">Rua Exemplo, 123</a></li>
+          <li><a href="#">São Paulo - SP</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Café Expresso. Todos os direitos reservados.</p>
+    </div>
   </footer>
 
   <script>
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        card.classList.toggle('flipped');
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(255, 253, 245, 0.98)';
+        header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+      } else {
+        header.style.background = 'rgba(255, 253, 245, 0.95)';
+        header.style.boxShadow = 'none';
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
       });
     });
   </script>
