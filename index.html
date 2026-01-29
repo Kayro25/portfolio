@@ -2,22 +2,30 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <title>Kayro Karsten | Portfolio</title>
+  <title>Kayro Karsten | Designer Gráfico & Desenvolvedor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio profissional de Kayro Karsten - Desenvolvedor & Designer">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfólio profissional de Kayro Karsten - Designer Gráfico e Desenvolvedor especializado em soluções visuais e digitais para empresas">
+  <meta name="keywords" content="designer gráfico, desenvolvedor, UI/UX, front-end, identidade visual, portfolio profissional">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
   <style>
     :root {
       --primary: #2563eb;
+      --primary-dark: #1d4ed8;
       --primary-light: #3b82f6;
+      --secondary: #1e293b;
+      --accent: #f97316;
       --text: #1e293b;
       --text-light: #64748b;
       --bg: #ffffff;
       --bg-light: #f8fafc;
+      --bg-dark: #f1f5f9;
       --border: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      --transition: all 0.3s ease;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius: 8px;
     }
 
     * {
@@ -27,276 +35,521 @@
     }
 
     body {
-      background: var(--bg);
+      background: var(--bg-light);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
+      padding: 0;
     }
 
     .container {
-      max-width: 500px;
+      max-width: 1000px;
       width: 100%;
       margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: var(--radius);
+      margin: 2rem 0;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
     }
 
     /* Profile Card */
-    .profile-card {
+    .profile-section {
       background: var(--bg);
-      border-radius: 16px;
-      padding: 2.5rem;
+      border-radius: var(--radius);
+      padding: 3rem;
+      margin-bottom: 2rem;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
-      text-align: center;
-      margin-bottom: 1.5rem;
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
 
     .avatar {
-      width: 80px;
-      height: 80px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      background: var(--bg-light);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.5rem;
-      color: var(--primary);
-      font-size: 2rem;
-      border: 2px solid var(--border);
-    }
-
-    .profile-info h1 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .profile-info p {
-      color: var(--text-light);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .skills {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .skill {
-      background: var(--bg-light);
-      color: var(--text-light);
-      padding: 0.25rem 0.75rem;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      border: 1px solid var(--border);
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .social-link {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-      text-decoration: none;
-      transition: var(--transition);
-      border: 1px solid var(--border);
-    }
-
-    .social-link:hover {
-      background: var(--primary);
       color: white;
-      transform: translateY(-2px);
-    }
-
-    /* Projects Section */
-    .projects-section {
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .project-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .project-link {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .project-link:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-
-    .project-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--bg-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-size: 1.1rem;
+      font-size: 3rem;
+      border: 4px solid white;
+      box-shadow: var(--shadow-lg);
       flex-shrink: 0;
     }
 
-    .project-info {
-      flex: 1;
-      text-align: left;
+    .profile-title h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    .project-info h3 {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-
-    .project-info p {
-      font-size: 0.85rem;
+    .profile-title p {
       color: var(--text-light);
-    }
-
-    .project-arrow {
-      color: var(--text-light);
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .project-link:hover .project-arrow {
-      opacity: 1;
-      transform: translateX(3px);
-    }
-
-    /* Contact Section */
-    .contact-section {
-      background: var(--bg-light);
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .contact-section h3 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-bottom: 1rem;
-      color: var(--text);
     }
 
-    .contact-buttons {
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* Skills Grid */
+    .skills-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      color: var(--secondary);
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 0.75rem;
     }
 
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-      border: 1px solid var(--border);
-    }
-
-    .email-btn {
-      background: var(--bg);
+    .section-title i {
       color: var(--primary);
     }
 
-    .email-btn:hover {
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .skill-category:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+
+    .skill-category h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-item {
+      background: var(--bg-light);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .project-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+
+    .project-image {
+      height: 180px;
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-content h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-content p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--bg-light);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* Experience */
+    .experience-section {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .experience-item {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-item:last-child {
+      border-bottom: none;
+    }
+
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .experience-header h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .experience-date {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .experience-desc {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      background: linear-gradient(135deg, var(--secondary) 0%, #0f172a 100%);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
       background: var(--primary);
       color: white;
     }
 
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      border-color: #25D366;
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
     }
 
-    .whatsapp-btn:hover {
-      background: #128C7E;
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
     }
 
     /* Footer */
     .footer {
-      text-align: center;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
+      background: var(--secondary);
+      color: white;
+      padding: 3rem 2rem 2rem;
+      border-radius: var(--radius) var(--radius) 0 0;
     }
 
-    .footer p {
-      color: var(--text-light);
-      font-size: 0.8rem;
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-link {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
     }
 
     /* Responsive */
-    @media (max-width: 480px) {
-      body {
-        padding: 0.5rem;
-      }
-      
-      .profile-card {
-        padding: 2rem 1.5rem;
-      }
-      
-      .project-link {
+    @media (max-width: 768px) {
+      .container {
         padding: 1rem;
       }
       
-      .contact-buttons {
-        gap: 0.5rem;
+      .header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      .hero {
+        padding: 3rem 1rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
       }
     }
 
-    /* Animation */
+    /* Animations */
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -304,118 +557,403 @@
       }
     }
 
-    .profile-card,
-    .project-link,
-    .contact-section {
-      animation: fadeIn 0.6s ease-out;
+    .fade-in {
+      animation: fadeIn 0.8s ease-out;
     }
 
-    .project-link:nth-child(1) { animation-delay: 0.1s; }
-    .project-link:nth-child(2) { animation-delay: 0.2s; }
-    .project-link:nth-child(3) { animation-delay: 0.3s; }
-    .contact-section { animation-delay: 0.4s; }
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    /* Print Styles */
+    @media print {
+      .header,
+      .footer,
+      .btn-secondary {
+        display: none;
+      }
+      
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .hero {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+      }
+    }
+    /* Projects Links Styles */
+.project-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.project-link {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.project-link:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+  background: var(--bg-light);
+}
+
+.project-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.project-info {
+  flex: 1;
+}
+
+.project-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--secondary);
+}
+
+.project-info p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.project-arrow {
+  color: var(--primary);
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.project-link:hover .project-arrow {
+  transform: translateX(4px);
+  color: var(--primary-dark);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .project-link {
+    padding: 1.25rem;
+  }
+  
+  .project-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.25rem;
+  }
+}
   </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <header class="header fade-in">
+    <a href="#" class="logo">
+      <i class="fas fa-cube"></i>
+      Kayro Karsten
+    </a>
+    <nav class="nav-links">
+      <a href="#sobre" class="nav-link">Sobre</a>
+      <a href="#habilidades" class="nav-link">Habilidades</a>
+      <a href="#projetos" class="nav-link">Projetos</a>
+      <a href="#contato" class="nav-link">Contato</a>
+    </nav>
+  </header>
+
   <div class="container">
-    <!-- Profile Card -->
-    <div class="profile-card">
-      <div class="avatar">
-        <i class="fas fa-code"></i>
+    <!-- Hero Section -->
+    <section class="hero fade-in">
+      <h1>Design & Desenvolvimento para <span class="highlight">Resultados Empresariais</span></h1>
+      <p>Combinando expertise em design gráfico e desenvolvimento para criar soluções digitais que impulsionam negócios e engajam usuários.</p>
+      <div class="cta-buttons">
+        <a href="#projetos" class="btn btn-primary">
+          <i class="fas fa-eye"></i>
+          Ver Projetos
+        </a>
+        <a href="#contato" class="btn btn-secondary">
+          <i class="fas fa-paper-plane"></i>
+          Contatar Agora
+        </a>
       </div>
-      <div class="profile-info">
-        <h1>Kayro G. P. Karsten</h1>
-        <p>Desenvolvedor & Designer</p>
-        <div class="skills">
-          <span class="skill">UI/UX</span>
-          <span class="skill">Front-end</span>
-          <span class="skill">Back-end</span>
-          <span class="skill">Design</span>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="sobre" class="profile-section fade-in">
+      <div class="profile-header">
+        <div class="avatar">
+          <i class="fas fa-user-tie"></i>
+        </div>
+        <div class="profile-title">
+          <h2>Kayro G. P. Karsten</h2>
+          <p>Designer Gráfico & Desenvolvedor Full-Stack</p>
+          <span class="badge">
+            <i class="fas fa-medal"></i>
+            Disponível para Oportunidades
+          </span>
         </div>
       </div>
-      <div class="social-links">
-        <a href="https://github.com/Kayro25" class="social-link">
-          <i class="fab fa-github"></i>
-        </a>
+      <p style="color: var(--text-light); line-height: 1.8;">
+        Profissional com formação técnica em <strong>Desenvolvimento de Sistemas</strong> e especialização em <strong>Design Gráfico</strong>. 
+        Combino habilidades técnicas e criativas para desenvolver soluções completas que vão desde a concepção visual até a implementação técnica. 
+        Foco em criar experiências digitais que atendam objetivos de negócio enquanto proporcionam usabilidade excepcional.
+      </p>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="habilidades" class="skills-section fade-in">
+      <h2 class="section-title">
+        <i class="fas fa-code-branch"></i>
+        Habilidades & Competências
+      </h2>
+      <div class="skills-grid">
+        <div class="skill-category fade-in delay-1">
+          <h3><i class="fas fa-paint-brush"></i> Design Gráfico</h3>
+          <div class="skill-list">
+            <span class="skill-item">Identidade Visual</span>
+            <span class="skill-item">UI/UX Design</span>
+            <span class="skill-item">Design de Interface</span>
+            <span class="skill-item">Prototipagem</span>
+            <span class="skill-item">GIMP</span>
+          </div>
+        </div>
+        
+        <div class="skill-category fade-in delay-2">
+          <h3><i class="fas fa-code"></i> Desenvolvimento</h3>
+          <div class="skill-list">
+            <span class="skill-item">HTML5/CSS3</span>
+            <span class="skill-item">JavaScript</span>
+            <span class="skill-item">C# .NET</span>
+            <span class="skill-item">MongoDB</span>
+            <span class="skill-item">OracleDB</span>
+            <span class="skill-item">React Native</span>
+            <span class="skill-item">React</span>
+            <span class="skill-item">Linux</span>
+            <span class="skill-item">Node.js</span>
+            <span class="skill-item">Git</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- Projects Section -->
-    <div class="projects-section">
-      <h2 class="section-title">Projetos em Destaque</h2>
-      <div class="project-links">
-        <a href="page1.html" class="project-link">
-          <div class="project-icon">
-            <i class="fas fa-car"></i>
-          </div>
-          <div class="project-info">
-            <h3>AutoDrive</h3>
-            <p>Concessionária</p>
-          </div>
-          <div class="project-arrow">
-            <i class="fas fa-chevron-right"></i>
-          </div>
-        </a>
+<section id="projetos" class="fade-in">
+  <h2 class="section-title">
+    <i class="fas fa-briefcase"></i>
+    Projetos Destacados
+  </h2>
+  <div class="projects-section">
+    <div class="project-links">
+      <a href="page1.html" class="project-link">
+        <div class="project-icon">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="project-info">
+          <h3>AutoDrive</h3>
+          <p>Concessionária</p>
+        </div>
+        <div class="project-arrow">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </a>
 
-        <a href="page2.html" class="project-link">
-          <div class="project-icon">
-            <i class="fas fa-coffee"></i>
-          </div>
-          <div class="project-info">
-            <h3>Café Expresso</h3>
-            <p>Cafeteria artesanal</p>
-          </div>
-          <div class="project-arrow">
-            <i class="fas fa-chevron-right"></i>
-          </div>
-        </a>
+      <a href="page2.html" class="project-link">
+        <div class="project-icon">
+          <i class="fas fa-coffee"></i>
+        </div>
+        <div class="project-info">
+          <h3>Café Expresso</h3>
+          <p>Cafeteria artesanal</p>
+        </div>
+        <div class="project-arrow">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </a>
 
-        <a href="page3.html" class="project-link">
-          <div class="project-icon">
-            <i class="fas fa-dumbbell"></i>
-          </div>
-          <div class="project-info">
-            <h3>PowerFit</h3>
-            <p>Academia</p>
-          </div>
-          <div class="project-arrow">
-            <i class="fas fa-chevron-right"></i>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <!-- Contact Section -->
-    <div class="contact-section">
-      <h3>Interessado em trabalhar juntos?</h3>
-      <div class="contact-buttons">
-        <a href="https://wa.me/5547988117067?text=Olá%20Kayro!%20Vim%20do%20seu%20portfólio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." 
-           class="contact-btn whatsapp-btn" 
-           target="_blank">
-          <i class="fab fa-whatsapp"></i>
-          Conversar no WhatsApp
-        </a>
-        <a href="mailto:me0711405@gmail.com" class="contact-btn email-btn">
-          <i class="fas fa-envelope"></i>
-          Enviar E-mail
-        </a>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <p>&copy; 2025 Kayro G. P. Karsten. Todos os direitos reservados.</p>
+      <a href="page3.html" class="project-link">
+        <div class="project-icon">
+          <i class="fas fa-dumbbell"></i>
+        </div>
+        <div class="project-info">
+          <h3>PowerFit</h3>
+          <p>Academia</p>
+        </div>
+        <div class="project-arrow">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </a>
     </div>
   </div>
+</section>
+
+    <!-- Experience Section -->
+    <section class="experience-section fade-in">
+      <h2 class="section-title">
+        <i class="fas fa-graduation-cap"></i>
+        Formação & Experiências
+      </h2>
+      <div class="experience-item">
+  <div class="experience-header">
+    <h3>Sistemas de Informação</h3>
+    <span class="experience-date">Em andamento</span>
+  </div>
+  <p class="experience-desc">
+    Graduação com foco em desenvolvimento web, bancos de dados e engenharia de software.
+  </p>
+</div>
+
+      <div class="experience-item">
+        <div class="experience-header">
+          <h3>Design Gráfico</h3>
+          <span class="experience-date">-</span>
+        </div>
+        <p class="experience-desc">Especialização em princípios de design, identidade visual e ferramentas profissionais da área.</p>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contato" class="cta-section fade-in">
+      <h2>Pronto para Transformar suas Ideias em Realidade?</h2>
+      <p>Estou disponível para oportunidades, projetos freelance ou posições em tempo integral. Vamos conversar sobre como posso contribuir para o sucesso do seu projeto ou empresa.</p>
+      <div class="cta-buttons">
+                <a href="mailto:me0711405@gmail.com?subject=Oportunidade%20Profissional&body=Prezado%20Kayro,%20gostaríamos%20de%20conversar%20sobre%20uma%20oportunidade." 
+           class="btn btn-secondary">
+          <i class="fas fa-envelope"></i>
+          E-mail Corporativo
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-cube"></i>
+          Kayro Karsten
+        </div>
+        <div class="footer-links">
+          <a href="#sobre" class="footer-link">Sobre</a>
+          <a href="#habilidades" class="footer-link">Habilidades</a>
+          <a href="#projetos" class="footer-link">Projetos</a>
+          <a href="#contato" class="footer-link">Contato</a>
+        </div>
+        <div class="social-links">
+  <a href="https://github.com/Kayro25" class="social-link" title="GitHub">
+    <i class="fab fa-github"></i>
+  </a>
+  <a href="https://instagram.com/kayro.karsten" class="social-link" title="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+</div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Kayro G. P. Karsten. Todos os direitos reservados.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem;">Portfólio profissional - Designer Gráfico & Desenvolvedor</p>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // Simple hover effects
-    document.querySelectorAll('.project-link').forEach(link => {
-      link.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Download CV simulation
+    document.getElementById('downloadCV').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // In a real scenario, this would link to your actual PDF
+      alert('Em um portfólio real, este botão baixaria seu currículo em PDF.\n\nPara esta demonstração, prepare um arquivo PDF com:\n\n1. Dados pessoais e contato\n2. Objetivo profissional\n3. Formação acadêmica\n4. Experiência\n5. Habilidades técnicas\n6. Projetos relevantes\n7. Idiomas\n8. Referências (opcional)');
+      
+      // Optional: Create a sample PDF download
+      // window.open('seu-curriculo.pdf', '_blank');
+    });
+
+    // Add scroll effect to header
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+      } else {
+        header.style.boxShadow = 'var(--shadow)';
+      }
+    });
+
+    // Print portfolio functionality
+    const printButton = document.createElement('button');
+    printButton.innerHTML = '<i class="fas fa-print"></i>';
+    printButton.style.position = 'fixed';
+    printButton.style.bottom = '20px';
+    printButton.style.right = '20px';
+    printButton.style.width = '50px';
+    printButton.style.height = '50px';
+    printButton.style.borderRadius = '50%';
+    printButton.style.background = 'var(--primary)';
+    printButton.style.color = 'white';
+    printButton.style.border = 'none';
+    printButton.style.cursor = 'pointer';
+    printButton.style.boxShadow = 'var(--shadow-lg)';
+    printButton.style.zIndex = '1000';
+    printButton.style.display = 'flex';
+    printButton.style.alignItems = 'center';
+    printButton.style.justifyContent = 'center';
+    printButton.style.fontSize = '1.2rem';
+    printButton.addEventListener('click', function() {
+      window.print();
+    });
+    document.body.appendChild(printButton);
+
+    // Add hover effect to project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-4px)';
       });
       
-      link.addEventListener('mouseleave', function() {
+      card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0)';
       });
     });
